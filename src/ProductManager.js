@@ -44,7 +44,7 @@ class ProductManager {
             }
         } catch (error) {
             console.error('getProductById -> ' + error.message)
-            return [];
+            return '';
         }
 
     }
@@ -61,8 +61,8 @@ class ProductManager {
                 ...product,
                 id: newId + 1
             })
-                await fs.writeFile(this.path, JSON.stringify(products, null, 2));
-                throw new Error('Producto Registrado con Éxito')
+            await fs.writeFile(this.path, JSON.stringify(products, null, 2));
+            throw new Error('Producto Registrado con Éxito')
         } catch (error) {
             console.error('addProduct -> ' + error.message);
         }
@@ -116,47 +116,6 @@ class ProductManager {
         }
 
     }
-    
+
 }
 module.exports = ProductManager;
-/* export default ProductManager */
-
-/* //Simulación de Funcionalidad de la aplicaión
-
-const products = new ProductManager(path.join(__dirname, 'products.json'));
-
-async function main() {
-
-    
-    //Trae listado de productos 
-   console.log(await products.getProducts());
-    //Agrega Producto
-    await products.addProduct({
-        title: 'VasoAtesanalMadera',
-        description: 'Vaso Artesanal de Madera Pintado a Mano',
-        price: 835,
-        thumbnail: '../_vaso_artesanal_01.png',
-        code: 'A001',
-        stock: 120
-    });
-    //Mustra listado de productos 
-    console.log(await products.getProducts());
-    //Busca Producto por ID y lo muestra
-    console.log(await products.getProductById('4'));
-    //Actualiza Producto
-    await products.updateProduct('2', {
-        title: "NuevoVasoAtesanalMadera",
-        description: " Nuevo Vaso Artesanal de Madera Pintado a Mano",
-        price: 222,
-        thumbnail: "/nuevo_vaso_artesanal_01.png",
-        code: "A999",
-        stock: 333,
-    });
-    //Elimina un producto
-    await products.deleteProduct('8');
-
-
-}
-
-
-main() */
