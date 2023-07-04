@@ -35,7 +35,7 @@ class ProductManager {
                 const resp = products.filter(item => item.id === parseInt(id));
                 if (resp.length > 0) {
                     console.log(`el producto con id: ${id} ha sido Encontrado`);
-                    return resp[0]
+                    return resp[0];
                 } else {
                     throw new Error(`Error: El Producto con ID ${id} No Existe`);
                 }
