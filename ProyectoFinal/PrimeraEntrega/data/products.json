@@ -1,209 +1,68 @@
 [
   {
     "id": 1,
-    "title": "logo caradahian",
-    "description": "Logo de caradahian en musciulosa",
-    "price": 350.55,
-    "stock": 99,
-    "keywords": [
-      "lego",
-      "caradahian",
-      "titanes en el ring"
-    ]
+    "title": "Cuaderno Espiral",
+    "description": "Cuaderno Espiral de 84 Hojas Cuadriculado",
+    "code": "CE84HC",
+    "price": 1200,
+    "status": true,
+    "stock": 35,
+    "category": "cuadernos",
+    "thumbnails": "/public/uploads/cuadernos_espiral_cuadriculados.jpg"
   },
   {
     "id": 2,
-    "title": "Pixel Warriors: Legends of the Mystic Realms",
-    "description": "Immerse yourself in an enchanting pixelated world where ancient warriors come to life. Join forces with mythical creatures, master powerful spells, and engage in epic battles against fearsome beasts. Uncover the secrets of the Mystic Realms and become a true legend.",
-    "price": 49.99,
-    "stock": 5,
-    "keywords": [
-      "pixelated",
-      "warriors",
-      "mythical creatures",
-      "spells",
-      "epic battles"
-    ]
+    "title": "Cuaderno Espiral",
+    "description": "Cuaderno Espiral de 84 Hojas Rayado",
+    "code": "CE84HR",
+    "price": 1100,
+    "status": true,
+    "stock": 50,
+    "category": "cuadernos",
+    "thumbnails": "/public/uploads/cuadernos_espiral_rayados.jpg"
   },
   {
     "id": 3,
-    "title": "CyberStrike: Neon Nemesis",
-    "description": "Step into a neon-lit, cyberpunk cityscape as an elite hacker in this action-packed game. Engage in high-speed, adrenaline-pumping combat, hack into rival factions' systems, and manipulate the digital world to outsmart your enemies. With cutting-edge weapons and advanced hacking abilities, become the ultimate Neon Nemesis.",
-    "price": 39.99,
-    "stock": 15,
-    "keywords": [
-      "cyberpunk",
-      "hacker",
-      "action-packed",
-      "combat",
-      "digital world"
-    ]
+    "title": "Lapiz Color Rojo",
+    "description": "Lapiz color Rojo largo Faber Castell x1",
+    "code": "LCRLFC",
+    "price": 600,
+    "status": true,
+    "stock": 200,
+    "category": "lapices color",
+    "thumbnails": "/public/uploads/pencil_red.jpg"
   },
   {
     "id": 4,
-    "title": "Mythical Mayhem: Realm Conqueror",
-    "description": "Enter a world of mythical creatures and legendary battles. Choose your hero, harness elemental powers, and embark on a quest to conquer the realms. Unleash devastating attacks, summon mythical allies, and rise as the ultimate Realm Conqueror.",
-    "price": 54.99,
-    "stock": 8,
-    "keywords": [
-      "mythical creatures",
-      "battles",
-      "powers",
-      "quest",
-      "conquer"
-    ]
+    "title": "Lapiz Color Morado",
+    "description": "Lapiz color Verde largo Faber Castell x1",
+    "code": "66556",
+    "price": 777,
+    "status": true,
+    "stock": 250,
+    "category": "yuyuiiy",
+    "thumbnails": "/public/uploads/pencil_green.jpg"
   },
   {
-    "id": 5,
-    "title": "Retro Racer: Turbo Blitz",
-    "description": "Strap in and rev up for a nostalgic racing experience. Race through neon-lit city streets, dodge obstacles, and compete against AI opponents. Upgrade your vehicles, unlock new tracks, and unleash turbo boosts to secure victory in Retro Racer: Turbo Blitz.",
-    "price": 29.99,
-    "stock": 12,
-    "keywords": [
-      "retro",
-      "racing",
-      "neon-lit",
-      "upgrades",
-      "turbo boosts"
-    ]
+    "title": "Lapiz Color Azul",
+    "description": "Lapiz color Azul largo Faber Castell x1",
+    "code": "LCALFC",
+    "price": 600,
+    "status": true,
+    "stock": 200,
+    "category": "lapices color",
+    "thumbnails": "/public/uploads/pencil_blue.jpg",
+    "id": 5
   },
   {
-    "id": 6,
-    "title": "Fantasy Frontier: Kingdoms Clash",
-    "description": "Embark on a journey through fantastical lands and build your kingdom from scratch. Gather resources, recruit heroes, and wage epic battles against other kingdoms. Expand your influence, forge alliances, and let your kingdom reign supreme in Fantasy Frontier: Kingdoms Clash.",
-    "price": 44.99,
-    "stock": 6,
-    "keywords": [
-      "fantasy",
-      "kingdom-building",
-      "heroes",
-      "epic battles",
-      "alliances"
-    ]
-  },
-  {
-    "id": 7,
-    "title": "Steampunk Solitude: Clockwork Chronicles",
-    "description": "Enter a Victorian-era world powered by steam and intricate clockwork mechanisms. Solve challenging puzzles, navigate mesmerizing environments, and uncover the secrets of the Clockwork Chronicles. Immerse yourself in a steampunk adventure like no other.",
-    "price": 49.99,
-    "stock": 10,
-    "keywords": [
-      "steampunk",
-      "puzzles",
-      "clockwork",
-      "Victorian",
-      "adventure"
-    ]
-  },
-  {
-    "id": 8,
-    "title": "Galactic Guardians: Stellar Warfare",
-    "description": "Command a fleet of powerful starships and engage in intense interstellar battles. Strategize, upgrade your vessels, and defend the galaxy against alien invasions. Lead the Galactic Guardians to victory in the epic saga of Stellar Warfare.",
-    "price": 64.99,
-    "stock": 3,
-    "keywords": [
-      "galactic",
-      "starships",
-      "interstellar battles",
-      "strategy",
-      "alien invasions"
-    ]
-  },
-  {
-    "id": 9,
-    "title": "Mystic Mage: Arcane Chronicles",
-    "description": "Unleash your inner mage and delve into the world of arcane arts. Learn powerful spells, solve mystifying puzzles, and navigate treacherous dungeons. Uncover ancient secrets and become the renowned Mystic Mage in the legendary Arcane Chronicles.",
-    "price": 54.99,
-    "stock": 7,
-    "keywords": [
-      "mage",
-      "arcane arts",
-      "spells",
-      "puzzles",
-      "dungeons"
-    ]
-  },
-  {
-    "id": 10,
-    "title": "Apocalypse Arena: Survival Showdown",
-    "description": "In a post-apocalyptic wasteland, fight for survival in brutal arena battles. Customize your warrior, scavenge for resources, and outmaneuver adversaries. Only the strongest will prevail in the unforgiving Apocalypse Arena: Survival Showdown.",
-    "price": 39.99,
-    "stock": 9,
-    "keywords": [
-      "post-apocalyptic",
-      "arena battles",
-      "survival",
-      "customization",
-      "resource scavenging"
-    ]
-  },
-  {
-    "title": "logo He-mann",
-    "description": "Logo de He-Mann de la opeca del miaupa",
-    "price": 199.99,
-    "stock": 130,
-    "keywords": [
-      "lego",
-      "he-mann",
-      "batman"
-    ],
-    "id": 11
-  },
-  {
-    "title": "logo He-mann",
-    "description": "Logo de He-Mann de la opeca del miaupa",
-    "price": 199.99,
-    "stock": 130,
-    "keywords": [
-      "lego",
-      "he-mann",
-      "batman"
-    ],
-    "id": 12
-  },
-  {
-    "title": "logo spidermann",
-    "description": "Logo de spiderman azul y rojo",
-    "price": 299.99,
-    "stock": 100,
-    "keywords": [
-      "lego",
-      "spiderman"
-    ],
-    "id": 14
-  },
-  {
-    "title": "logo spidermann",
-    "description": "Logo de spiderman azul y rojo",
-    "price": 1299.99,
-    "stock": 533,
-    "keywords": [
-      "lego",
-      "spiderman"
-    ],
-    "id": 15
-  },
-  {
-    "title": "logo spidermann",
-    "description": "Logo de spiderman azul y rojo",
-    "price": 299.99,
-    "stock": 100,
-    "keywords": [
-      "lego",
-      "spiderman"
-    ],
-    "id": 16
-  },
-  {
-    "title": "logo pepeGrillo",
-    "description": "Logo de pepeGrillo Verde",
-    "price": 200.12,
-    "stock": 111,
-    "keywords": [
-      "lego",
-      "spiderman",
-      "pepeGrillo"
-    ],
-    "id": 17
+    "title": "Lapiz Color Marron",
+    "description": "Lapiz color Verde largo Faber Castell x1",
+    "code": "LCVLFC",
+    "price": 700,
+    "status": true,
+    "stock": 250,
+    "category": "lapices color",
+    "thumbnails": "/public/uploads/pencil_red.jpg",
+    "id": 6
   }
 ]

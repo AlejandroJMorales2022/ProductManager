@@ -1,22 +1,14 @@
 const { error } = require('console');
 const fs = require('fs/promises')
 const path = require('path')
-/* import fs from 'fs/promises'
-import path from 'path'
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); */
 
 
 class ProductManager {
     #products = [];
 
     constructor(filename) {
-        /* this.path = path; */
         this.filename = filename
         this.filepath = path.join(__dirname,'../data' ,this.filename)
-        console.log(this.filepath)
     }
 
     #readFile = async () => {
@@ -64,16 +56,22 @@ class ProductManager {
         const {
           title,
           description,
-          stock,
+          code,
           price,
-          keywords
+          status,
+          stock,
+          category,
+          thumbnails
         } = product
     
         existing.title = title
         existing.description = description
-        existing.stock = stock
+        existing.code = code
         existing.price = price
-        existing.keywords = keywords
+        existing.status = status
+        existing.stock = stock
+        existing.category = category
+        existing.thumbnails = thumbnails
     
         await this.#writeFile()
       }
