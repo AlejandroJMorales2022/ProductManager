@@ -54,7 +54,7 @@ Tecnologías Utilizadas:
 
 
 
-  
+
 
 <a id=item2><a/>
 - **Rutas para Administrar Productos**
@@ -68,7 +68,7 @@ Tecnologías Utilizadas:
   
   *PUT api/products/:pid* esta petición solicita modificar un producto existente según el parámetro pid. Además se envía un body con la información que se pretende modificar del producto.
   
-  *POST api/products/:pid/upload* esta petición adicional permite asignar un archivo de imagen al producto indicado por el parámetro pid. La misma se conforma también de un body Multipart en el que se indica la ruta del archivo de imagen. Dicho archivo, a través del middleware Multer se cargara y almacenará en la carpeta public/uploads de la aplicación.  
+  *POST api/products/:pid/upload* esta petición adicional permite asignar un archivo de imagen al producto indicado por el parámetro pid. La misma se conforma también de un body Multipart en el que se indica la ruta del archivo de imagen. Dicho archivo, a través del middleware Multer se cargara y almacenará en la carpeta public/uploads de la aplicación. 
   
   
   
@@ -76,53 +76,55 @@ Tecnologías Utilizadas:
 
 <a id=item3><a/>
 
-- **Rutas para Administrar Carritos de Compra** 
+-**Rutas para Administrar Carritos de Compra** 
 
   *GET api/carts/:cid* esta ruta solicita al servidor el listado de productos contenidos en el cart indicado en el parámetro cid.
   *POST api/carts/* crea un nuevo carro de compras con la estructura por defecto, la misma es un objeto con el id del carrito y una propiedad products que contrendrá un array vacío. {id:x , products: [] }. 
-  *PUT api/carts/:cid/product/:pid* esta petición indica al servidor agregar al carrito seleccionado según el parámetro cid el producto indicado por el parámetro pid. Se debe agregar a la peticón un body en el que se indicará la cantidad de producto a agregar {qty:x}. 
-  En caso que el producto exista en el carrito se debe sumar el valor de qty a la cantidad ya almacenada.
+  *POST api/carts/:cid/product/:pid* esta petición indica al servidor agregar al carrito seleccionado según el parámetro cid el producto indicado por el parámetro pid.  
+  En caso que el producto exista en el carrito se debe incrementar en 1 el valor de qty existente en dich producto.
+
+
 
   <a id=item4><a/>
 
-- **Estructura de Datos**
+-**Estructura de Datos**
 
   Los **products** tendrán la siguiente estructura
   {
-  		"title": string,
+  		    "title": string,
           "description": string,
           "code": string,
           "price": number,
           "status": boolean (true por defecto),
           "stock": number,
           "category": string ,
-          "thumbnails": string
+          "thumbnails": [array de string]
   }
 
   <u>Nota:</u> Todas las propiedades de product son obligatorias, salvo thumbnails.
 
   
 
-  Los **carts** tendrán la siguiente estructura:
+  Cada **cart** tendrá la siguiente estructura que reporesenta un objeto con el id del carrito y una propiedad products que en principio será un array vacío y que alojará objetos product cada uno de ellos con su identificacion (id) y cantidad (qty).
+
   {
   "id": x,
-  products: [{ product1 },{ product2 },{ product n }]
+  products: [{ id:x1, qty:x },{ id:x2, qty:x },{ id:xn, qty:x }]
 
   }
 
   
-  
 
-- **Respuestas del Servidor**
+
+-**Respuestas del Servidor**
 
   <u>**GET /api/products/** devuelve el listado de productos</u>
   [
-  {...product 1
-
+  {
+    ...product 1
   },
   {
   ...product n
-
   }
   ]
 
@@ -133,7 +135,7 @@ Tecnologías Utilizadas:
   {
   "status":201,
   "message": El Producto ha sido Agregado Correctamente...",
-  "product": {
+  "payload": {
   		"title": "titulo",
   		"description": "detalle",
   		"code": "codigo",
@@ -149,7 +151,7 @@ Tecnologías Utilizadas:
 
   
 
-​		<u>**PUT api/products/pid** devuelve un objeto con el siguiente formato:</u>
+​		-<u>**PUT api/products/pid** devuelve un objeto con el siguiente formato:</u>
 
 ​		{
 ​			"status": 202,
@@ -158,7 +160,7 @@ Tecnologías Utilizadas:
 
 
 
-​		<u>**DELETE api/products/:pid**** devuelve un objeto con el siguiente formato:</u>
+​		-<u>**DELETE api/products/:pid**** devuelve un objeto con el siguiente formato:</u>
 
 ​		{
 ​			"status": 200,
@@ -167,27 +169,29 @@ Tecnologías Utilizadas:
 
 
 
-​		<u>**POST api/carts** devuelve un objeto con el siguiente formato:</u>
+​		-<u>**POST api/carts** devuelve un objeto con el siguiente formato:</u>
 
 ​		{
 ​			"products": [],
 ​			"id": 1
 ​		}
 
-​		<u>**PUT api/carts/:cid/products/:pid** devuelve un objeto con el siguiente formato:</u>
+​		-<u>**POST api/carts/:cid/products/:pid** devuelve un objeto con el siguiente formato:</u>
 
 ​		{
 ​			"status": 202,
 ​			"message": "El Producto ha sido Agregado Correctamente al carrito..."
 ​		}
 
-​		<u>**Errores:** Las respuesta del servidor ante mensajes de error tienen el siguiente formato:</u>
+​		-<u>**Errores:** Las respuesta del servidor ante mensajes de error tienen el siguiente formato:</u>
 
 ​		{
 ​			"status": 404,
 ​			"message": "El Producto con Id xx No Existe..."
 ​		}
-​		ó 
+
+​		ó
+
 ​		{
 ​			"status": 500,
 ​			"message": "Ha ocurrido un error en el servidor",

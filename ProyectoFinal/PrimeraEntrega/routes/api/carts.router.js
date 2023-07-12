@@ -27,7 +27,7 @@ router.get('/:cid', async (req, res) => {
                 const promise = cart.products.map(async (prod, index) => {
                     const product = await pM.getById(parseInt(prod.id));
 
-                    return { ...product, qty: prod.qty };
+                    return { ...product, quantity: prod.quantity };
                 });
                 const productsInCart = await Promise.all(promise);
                 res.send(productsInCart);
@@ -64,9 +64,8 @@ router.post('/', async (req, res) => {
 });
 
 //PUT /:cid/product/:pid 
-router.put('/:cid/product/:pid', async (req, res) => {
+router.post('/:cid/product/:pid', async (req, res) => {
     const { cid,pid } = req.params
-    const { body } = req
 
     try {
         if (!await cM.getById(cid)) {
@@ -83,7 +82,7 @@ router.put('/:cid/product/:pid', async (req, res) => {
             });
             return;
         };
-        await cM.save(cid, pid, body);
+        await cM.save(cid, pid);
         res.status(202).send({
         status:202,
         message: `El Producto ha sido Agregado Correctamente al carrito...`

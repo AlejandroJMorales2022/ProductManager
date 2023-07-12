@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
         if (limit) {
             filtrados = filtrados.splice(0, limit);
         }
-        res.send(filtrados);
+        res.send({ status: 200, payload: filtrados });
     } catch (e) {
         res.status(500).send({
             message: "Ha ocurrido un error en el servidor",
@@ -52,7 +52,7 @@ router.get('/:pid', async (req, res) => {
         if (pid) {
             const products = (await pM.getById(pid));
             if (products) {
-                res.send(products);
+                res.send({ status: 200, payload: products });
             } else {
                 res.status(404).send({
                     status: 404,
@@ -88,7 +88,7 @@ router.post('/', async (req, res) => {
             res.status(201).send({
                 status: 201,
                 message: `El Producto ha sido Agregado Correctamente...`,
-                product: product
+                payload: product
             });
         }
 
@@ -132,7 +132,7 @@ router.put('/:pid', async (req, res) => {
     try {
 
         const responseValidate = validateProduct(body);
-         
+
         if (!await pM.getById(pid)) {
             res.status(404).send({
                 status: 404,
@@ -140,7 +140,7 @@ router.put('/:pid', async (req, res) => {
             })
             return;
         } else {
-            if(responseValidate.error!==0){
+            if (responseValidate.error !== 0) {
                 res.status(500).send({
                     status: 500,
                     Message: `La Propiedad < ${responseValidate.field} > es Obligatoria y No puede estar Vacia...`
@@ -175,9 +175,21 @@ router.post('/:pid/upload', upload.single('img'), async (req, res) => {
             return;
         }
         const { pid } = req.params;
+
         let product = await pM.getById(pid);
+        if (!product) {
+            res.status(404).send({
+                status: 404,
+                message: `El Producto con id ${pid} NO Existe...`
+            })
+            return;
+        }
+        let imgsProduct = product.thumbnails;
+
+        imgsProduct.push('/public/uploads/' + fileName);
+
         if (product) {
-            product = { ...product, thumbnails: '/public/uploads/' + fileName };
+            product = { ...product, thumbnails: imgsProduct };
             await pM.save(pid, product);
             res.status(202).send({
                 status: 202,

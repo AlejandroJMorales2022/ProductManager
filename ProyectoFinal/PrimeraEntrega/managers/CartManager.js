@@ -40,24 +40,24 @@ class CartManager {
         return newCart;
     }
 
-    async save(cid, pid, product) {
-        const { qty } = product;
+    async save(cid, pid) {
+
         await this.#readFile();
         this.#carts.forEach((cart, index) => {
             if (cart.id == cid) {
                 if (cart.products.length === 0) {
-                    this.#carts[index] = { ...cart, products: [{ id: parseInt(pid), qty: qty }] }
+                    this.#carts[index] = { ...cart, products: [{ id: parseInt(pid), quantity: 1 }] }
                 } else {
                     const existing = cart.products.find((prod) => prod.id == parseInt(pid));
                     if (existing) {
                         cart.products.forEach((prod, index) => {
                             if (prod.id == parseInt(pid)) {
-                                cart.products[index] = { ...prod, qty: (prod.qty + qty) };
+                                cart.products[index] = { ...prod, quantity: (prod.quantity + 1) };
                             }
                         });
                         /* return { ...cart }; */
                     } else {
-                        cart.products = [...cart.products, { id: parseInt(pid), qty: qty }]
+                        cart.products = [...cart.products, { id: parseInt(pid), quantity: 1 }]
                     }
                 }
             }

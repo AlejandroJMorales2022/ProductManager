@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "title": "Cuaderno Espiral",
     "description": "Cuaderno Espiral de 84 Hojas Cuadriculado",
     "code": "CE84HC",
@@ -8,10 +7,13 @@
     "status": true,
     "stock": 35,
     "category": "cuadernos",
-    "thumbnails": "/public/uploads/cuadernos_espiral_cuadriculados.jpg"
+    "thumbnails": [
+      "/public/uploads/cuadernos_espiral_cuadriculados.jpg",
+      "/public/uploads/pencil_blue.jpg"
+    ],
+    "id": 1
   },
   {
-    "id": 2,
     "title": "Cuaderno Espiral",
     "description": "Cuaderno Espiral de 84 Hojas Rayado",
     "code": "CE84HR",
@@ -19,10 +21,12 @@
     "status": true,
     "stock": 50,
     "category": "cuadernos",
-    "thumbnails": "/public/uploads/cuadernos_espiral_rayados.jpg"
+    "thumbnails": [
+      "/public/uploads/cuadernos_espiral_rayados.jpg"
+    ],
+    "id": 2
   },
   {
-    "id": 3,
     "title": "Lapiz Color Rojo",
     "description": "Lapiz color Rojo largo Faber Castell x1",
     "code": "LCRLFC",
@@ -30,10 +34,12 @@
     "status": true,
     "stock": 200,
     "category": "lapices color",
-    "thumbnails": "/public/uploads/pencil_red.jpg"
+    "thumbnails": [
+      "/public/uploads/pencil_red.jpg"
+    ],
+    "id": 3
   },
   {
-    "id": 4,
     "title": "Lapiz Color Morado",
     "description": "Lapiz color Verde largo Faber Castell x1",
     "code": "66556",
@@ -41,7 +47,10 @@
     "status": true,
     "stock": 250,
     "category": "yuyuiiy",
-    "thumbnails": "/public/uploads/pencil_green.jpg"
+    "thumbnails": [
+      "/public/uploads/pencil_green.jpg"
+    ],
+    "id": 4
   },
   {
     "title": "Lapiz Color Azul",
@@ -51,7 +60,9 @@
     "status": true,
     "stock": 200,
     "category": "lapices color",
-    "thumbnails": "/public/uploads/pencil_blue.jpg",
+    "thumbnails": [
+      "/public/uploads/pencil_blue.jpg"
+    ],
     "id": 5
   },
   {
@@ -62,7 +73,9 @@
     "status": true,
     "stock": 250,
     "category": "lapices color",
-    "thumbnails": "/public/uploads/pencil_red.jpg",
+    "thumbnails": [
+      "/public/uploads/pencil_red.jpg"
+    ],
     "id": 6
   }
 ]
