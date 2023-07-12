@@ -1,8 +1,7 @@
 const express = require('express');
 const { api } = require('./routes/index')
 const path = require('path');
-/* import express from 'express'
-import ProductManager from './ProductManager.js' */
+
 
 
 const app = express();
