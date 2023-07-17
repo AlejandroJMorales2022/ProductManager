@@ -1,0 +1,15 @@
+<div class="pt-4">
+    <span class="gral ms-4">Todo Listo para Trabajar con Handlebars y Websockets</span>
+    <input id="txtMessage" type="text">
+    <button onclick=enviarMensaje(document.getElementById('txtMessage').value)>Enviar Mensaje</button>
+</div>
+<div class="card ms-4 me-4 mt-3 mb-3 p-2">
+    <span id='chat'></span>
+</div>
+<script>
+    function enviarMensaje(mensaje){
+    socket.emit('message',mensaje);
+    }
+</script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="static/js/index.js"></script>
