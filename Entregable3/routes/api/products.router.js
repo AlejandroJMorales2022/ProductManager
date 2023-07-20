@@ -9,7 +9,7 @@ const app = express();
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, '../../public/uploads'));
+        cb(null, path.join(__dirname, '../../uploads'));
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -78,10 +78,10 @@ router.get('/:pid', async (req, res) => {
 
 //POST (add product) api/products/
 router.post('/', async (req, res) => {
+    
     const { body, headers } = req;
     let error = 0;
     try {
-
         const responseValidate = validateProduct(body);
         if (responseValidate.error !== 0) {
             res.status(500).send({
@@ -90,7 +90,13 @@ router.post('/', async (req, res) => {
             });
         } else {
             const product = await pM.create(body);
-
+            if(product.error){
+                res.status(500).send({
+                    status: 500,
+                    Message: `Ya Existe un Producto con el código ${product.code}...`
+                });
+                return;
+            }
             res.status(201).send({
                 status: 201,
                 message: `El Producto ha sido Agregado Correctamente...`,
@@ -165,14 +171,14 @@ router.put('/:pid', async (req, res) => {
         }
         await pM.save(pid, body);
 
-        const io = req.app.get('socketio');
-        // Emitir evento 'update_products' a todos los clientes conectados
-        io.emit('update_products', { id: pid, msg: 'el producto fue modificado' });
-
         res.status(202).send({
             status: 202,
             message: `El Producto ${pid} ha sido Modificado correctamente...`
         });
+        const io = req.app.get('socketio');
+        // Emitir evento 'update_products' a todos los clientes conectados
+        io.emit('update_products', { id: pid, msg: 'el producto fue modificado' });
+        
     } catch (e) {
         res.status(500).send({
             status: 500,
@@ -186,6 +192,8 @@ router.put('/:pid', async (req, res) => {
 router.post('/:pid/upload', upload.single('img'), async (req, res) => {
     const { originalname, path } = req.file;
     const fileName = originalname;
+    console.log(path)
+    console.log(fileName)
     try {
         if (!req.file) {
             res.status(404).send({

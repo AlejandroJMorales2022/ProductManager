@@ -32,9 +32,9 @@ class CartManager {
         const id = (this.#carts[this.#carts.length - 1]?.id || 0) + 1;
 
         const newCart = {
-            ...cart,
-            id
-        };
+            id:id,
+            products:[]
+        }
         this.#carts.push(newCart);
         await this.#writeFile();
         return newCart;

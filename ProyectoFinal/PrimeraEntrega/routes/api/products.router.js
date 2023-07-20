@@ -75,7 +75,6 @@ router.post('/', async (req, res) => {
     const { body, headers } = req;
     let error = 0;
     try {
-
         const responseValidate = validateProduct(body);
         if (responseValidate.error !== 0) {
             res.status(500).send({
@@ -84,7 +83,14 @@ router.post('/', async (req, res) => {
             });
         } else {
             const product = await pM.create(body);
-
+            if(product.error){
+                res.status(500).send({
+                    status: 500,
+                    Message: `Ya Existe un Producto con el código ${product.code}...`
+                });
+                return;
+            }
+            
             res.status(201).send({
                 status: 201,
                 message: `El Producto ha sido Agregado Correctamente...`,

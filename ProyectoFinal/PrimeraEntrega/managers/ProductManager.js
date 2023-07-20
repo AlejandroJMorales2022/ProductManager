@@ -34,7 +34,13 @@ class ProductManager {
     
       async create(product) {
         await this.#readFile()
-    
+        
+        const codeExists = this.#products.find(p => p.code === product.code);
+        if (codeExists) {
+          return {...product, error:true}
+          /* throw new Error('El código del producto ya existe. No se puede agregar.'); */
+        }
+
         const id = (this.#products[this.#products.length - 1]?.id || 0) + 1
     
         const newProduct = {

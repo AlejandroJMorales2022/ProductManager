@@ -10,3 +10,11 @@
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-weight: 600;
 }
+.form_products div{
+    display: block;
+    padding: 10px;
+}
+.title_container{
+    display: flex;
+    justify-content: center;
+}
