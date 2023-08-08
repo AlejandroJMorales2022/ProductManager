@@ -1,10 +1,10 @@
 const express = require('express');
 const { Router } = require('express');
-const pM = require('../../managers/product.manager');
+const pM = require('../../dao/managers/products/Product.db.manager');
 const multer = require('multer');
 const path = require('path');
 //importo el modelo de products de mongo db
-const productModel = require('../../models/products.model')
+const productModel = require('../../dao/models/products.model')
 
 
 const app = express();

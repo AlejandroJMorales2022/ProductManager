@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const pM = require('../../src/managers/product.manager');
+const pM = require('../../src/dao/managers/products/Product.db.manager');
 
 
 /* const pM = productManager; */

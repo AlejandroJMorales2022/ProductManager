@@ -13,7 +13,7 @@
     const handlebars = require('express-handlebars');
     const { Server } = require('socket.io');
     const mongoose = require('mongoose');
-    const chatMessageManager = require('../src/managers/chat.message.manager');
+    const chatMessageManager = require('../src/dao/managers/chats/Chat.db.message.manager');
 
     const { api, views } = require('../src/routes/index')
     let userOnline = [];
