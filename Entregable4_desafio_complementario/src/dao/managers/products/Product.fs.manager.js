@@ -8,7 +8,7 @@ class ProductManager {
 
     constructor(filename) {
         this.filename = filename
-        this.filepath = path.join(__dirname,'../../data' ,this.filename)
+        this.filepath = path.join(__dirname,'../../../../data' ,this.filename)
     }
 
     #readFile = async () => {
