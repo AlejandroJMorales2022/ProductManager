@@ -63,9 +63,10 @@ const login = async (email, _password, done) => {
 
         //agrego el flag de Logged=true
         // TODO: borrar password
-        const { password, __v, ...user_} = _user;
-        const userLogged= {...user_, logged:true}
-        console.log('userLogged: ' + JSON.stringify(userLogged,null,2))
+        console.log('_user: ' + JSON.stringify(_user, null, 2))
+        const { password, __v, ...user_ } = _user;
+        const userLogged = { ...user_, logged: true }
+
         done(null, userLogged);
 
     } catch (error) {
@@ -73,9 +74,6 @@ const login = async (email, _password, done) => {
         done(error, false);
     };
 };
-
-
-
 
 
 
@@ -87,12 +85,14 @@ const initializePassport = () => {
     /// { usernamField: 'username', passwordField: 'password' }
     passport.use('local-signup', new LocalStrategy({ usernameField: 'email', passReqToCallback: true }, signup));
     passport.use('local-login', new LocalStrategy({ usernameField: 'email' }, login));
-    
+
     passport.serializeUser((user, done) => {
+
         done(null, user._id);
     });
     passport.deserializeUser(async (id, done) => {
         const user = await userManager.getById(id);
+
         // TODO: borrar el password
         const { password, ...userLogged } = user;
         done(null, userLogged);

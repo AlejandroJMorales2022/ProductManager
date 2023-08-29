@@ -11,7 +11,7 @@ class UserManager {
   }
 
   getByEmail(email) {
-    console.log(email)
+    /* console.log(email) */
     return userModel.findOne({ email }).lean()
   }
 

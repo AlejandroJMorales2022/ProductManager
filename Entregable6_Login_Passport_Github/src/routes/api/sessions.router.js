@@ -24,13 +24,13 @@ router.post('/signup', (req, res, next) => {
       // Manejo de fallo de registro
       return res.render('signup', {
         status: '401',
-        error: 'No se pudo crear el usuario...',
+        error: 'El Usuario ya Existe...',
         style: 'style',
       });
     }
 
     // Autenticación exitosa (registro exitoso)
-    req.logIn(user, (err) => {
+    /* req.logIn(user, (err) => {
       if (err) {
         // Manejo de error de inicio de sesión
         return res.render('signup', {
@@ -43,24 +43,18 @@ router.post('/signup', (req, res, next) => {
       // No siempre es necesario almacenar la propiedad role en el registro
 
       // Redirección después de un registro exitoso
-      res.redirect('/');
-    });
+      res.redirect('/login');
+    }); */
+    res.redirect('/login');
   })(req, res, next);
 });
 
-/* router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/login',
-  failureRedirect: '/signup'
-})) */
-
-/* router.post('/login', passport.authenticate('local-login', {
-  successRedirect: '/',
-  failureRedirect: '/login'
-})) */
 
 router.post('/login', (req, res, next) => {
+
   passport.authenticate('local-login', (err, user, info) => {
 
+    console.log('PASSPORT.AUTHENTICATE USER: ' + JSON.stringify(user, null, 2))
     if (err) {
       // Manejo de error
       res.render('login', {
@@ -78,14 +72,6 @@ router.post('/login', (req, res, next) => {
         login: false,
         style: 'style',
       });
-      // Manejo de fallo de inicio de sesión
-      /* return res.status(401).send({
-        status: '401',
-        message: 'Inicio de sesión fallido',
-        user: {
-          logged: false
-        }
-      }); */
 
     }
 
@@ -94,6 +80,7 @@ router.post('/login', (req, res, next) => {
 
     // Autenticación exitosa
     req.logIn(user, (err) => {
+      console.log('LOGIN USER: ' + JSON.stringify(user, null, 2))
       if (err) {
         // Manejo de error de inicio de sesión
         return res.render('login', {
@@ -108,6 +95,7 @@ router.post('/login', (req, res, next) => {
       // Redirección después de un inicio de sesión exitoso
       res.redirect('/');
     });
+    
   })(req, res, next);
 });
 

@@ -54,7 +54,6 @@ router.get('/', isAuth, async (req, res) => {
         if (user !== undefined) {
             newUser = user['0'];
         }
-        console.log('ROLLLLLLLL: ' + req.session.role)
 
         if (products) {
             res.render('home', {
@@ -225,6 +224,25 @@ router.get('/administracion', (req, res) => {
         } : null,
         title: 'Pantalla de Administración',
         style: 'style'
+    })
+})
+
+//admin
+router.get('/admin', (req, res, next) => {
+
+    const { email} = req.body
+    console.log(req.body)
+    res.render('adminUsersList', {
+        user: {
+            firstname: email,
+            logged:true,
+        },
+        
+        adminView: true,
+        style: 'style',
+        js: 'adminview',
+        title: 'Autenticado con JWT'
+
     })
 })
 

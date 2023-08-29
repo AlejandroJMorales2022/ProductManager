@@ -3,6 +3,7 @@ const ProductRouter = require('./api/products.router');
 const CartRouter = require('./api/carts.router');
 const ViewRouter = require('./views.router');
 const SessionRouter = require('./api/sessions.router');
+const AuthRouter = require('./api/auth.router');
 
 
 // /api
@@ -14,6 +15,9 @@ router.use('/products', ProductRouter);
 router.use('/carts', CartRouter);
 // route de Sessions
 router.use('/sessions', SessionRouter);
+//route de Auth
+router.use('/auth', AuthRouter)
+
 
 
 module.exports = {

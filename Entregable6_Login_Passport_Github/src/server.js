@@ -26,7 +26,7 @@ const initializePassport = require('./config/passport.config');
     const passport = require('passport');
     const InitializePassport = require('./config/passport.config');
 
-
+    //Importo los routers
     const { api, views } = require('../src/routes/index')
     let userOnline = [];
 
@@ -67,7 +67,8 @@ const initializePassport = require('./config/passport.config');
         /// middleware global
         app.use((req, res, next) => {
 
-            console.log('respuesa de session:'+ JSON.stringify(req.session,null,2), req.user)
+            console.log('respuesa User:'+ JSON.stringify(req.user,null,2))
+            /* console.log('respuesa de session:'+ JSON.stringify(req.session,null,2), req.user) */
             // console.log(req.cookies) // leer las cookies
             // console.log(req.signedCookies)
 

@@ -58,8 +58,6 @@ router.get('/:pid', async (req, res) => {
     try {
         if (pid) {
             const product = await pM.getById(pid);
-            /* const products = await productModel.findOne({ _id: pid }); */
-            console.log('devuelve: '+ product._id)
             if (product.title) {
                 //emitir evento a todos los clientes conectados por websocket
                 res.send({ status: 200, payload: product });
@@ -104,9 +102,7 @@ router.post('/', async (req, res) => {
             });
         } else {
             const product = await pM.create(body);
-            /* const product = await productModel.create(body); */
-            console.log(product);
-            if (product.error) {
+            if (product.errors) {
                 res.status(500).send({
                     status: 500,
                     Message: `Ya Existe un Producto con el código ${product.code}...`
@@ -137,7 +133,7 @@ router.delete('/:pid', async (req, res) => {
     const { pid } = req.params;
     try {
         /* const result = await productModel.deleteOne({ _id: pid }) */
-        const result = await pM.delete( pid)
+        const result = await pM.delete(pid)
         console.log(result)
         if (result.deletedCount == 1) {
             res.status(200).send({
