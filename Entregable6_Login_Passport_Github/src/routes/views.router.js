@@ -14,18 +14,14 @@ const router = Router();
 
 router.get('/chat', isAuth, (req, res) => {
     const { user } = req;
-    let newUser = {};
-    if (user !== undefined) {
-        newUser = user['0'];
-    }
 
     res.render('chat', {
         chat: true,
         style: 'style',
         js: 'chat',
         title: 'CHAT',
-        user: newUser ? {
-            ...newUser,
+        user: user ? {
+            ...user,
             logged: true,
             role: req.session.role,
             /* (req.session.user.email === 'adminCoder@coder.com' && req.session.user.password === 'Cod3r123') ? 'Administrador' : 'Usuario', */
@@ -50,11 +46,6 @@ router.get('/', isAuth, async (req, res) => {
         req.session.homeCount = (req.session.homeCount || 0) + 1;
         const { user } = req;
 
-        let newUser = {};
-        if (user !== undefined) {
-            newUser = user['0'];
-        }
-
         if (products) {
             res.render('home', {
                 products: products,
@@ -63,8 +54,8 @@ router.get('/', isAuth, async (req, res) => {
                 realtimeProducts: true,
                 style: 'style',
                 js: 'realtimeproducts',
-                user: newUser ? {
-                    ...newUser,
+                user: user ? {
+                    ...user,
                     logged: true,
                     role: req.session.role,
                     /* (req.session.user.email === 'adminCoder@coder.com' && req.session.user.password === 'Cod3r123') ? 'Administrador' : 'Usuario', */
@@ -136,20 +127,11 @@ router.get('/carts/:cid', async (req, res) => {
 
 router.get('/profile', isAuth, (req, res) => {
 
-    /* console.log('REQUEST DEL PROFILE '+JSON.stringify(req,null,2)) */
-    /* console.log(util.inspect(req, { showHidden: false, depth: null })); */
-
     const { user } = req;
-    /* const newUser = user['0']; */
-    let newUser = {};
-    if (user !== undefined) {
-        newUser = user['0'];
-    }
-
 
     res.render('profile', {
-        user: newUser ? {
-            ...newUser,
+        user: user ? {
+            ...user,
             logged: true,
             role: req.session.role,
             /* (req.session.user.email === 'adminCoder@coder.com' && req.session.user.password === 'Cod3r123') ? 'Administrador' : 'Usuario', */
@@ -175,16 +157,11 @@ router.get('/login', (req, res) => res.render('login', {
 
 router.get('/logout', isAuth, (req, res) => {
     const { user } = req;
-    /* const newUser = user['0']; */
-    let newUser = {};
-    if (user !== undefined) {
-        newUser = user['0'];
-    }
 
     req.logOut((err) => {
         if (!err) {
             res.render('logout', {
-                user: ` ${newUser.firstname}`,
+                user: ` ${user.firstname}`,
                 logged: false,
                 style: 'style'
 
@@ -196,28 +173,21 @@ router.get('/logout', isAuth, (req, res) => {
 router.get('/user-data', (req, res) => {
     /*  console.log(util.inspect(req, { showHidden: false, depth: null })); */
     const { user } = req;
-    let newUser = {};
-    if (user !== undefined) {
-        newUser = user['0'];
-    }
+   
 
-    if (newUser) {
-        res.json({ usuario: newUser.email });
+    if (user) {
+        res.json({ usuario: user.email });
     } else {
-        /*  res.json({ mensaje: 'Usuario no autenticado' }); */
         res.redirect('/');
     }
 });
 
 router.get('/administracion', (req, res) => {
     const { user } = req;
-    let newUser = {};
-    if (user !== undefined) {
-        newUser = user['0'];
-    }
+
     res.render('administracion', {
-        user: newUser ? {
-            ...newUser,
+        user: user ? {
+            ...user,
             logged: true,
             role: req.session.role,
              isAdmin: (req.session?.role === 'Administrador') ? true : false

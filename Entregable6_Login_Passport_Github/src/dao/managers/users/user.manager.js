@@ -7,12 +7,15 @@ class UserManager {
   }
 
   getById(id) {
-    return userModel.find({ _id: id }).lean()
+    return userModel.findOne({ _id: id }).lean()
   }
 
   getByEmail(email) {
     /* console.log(email) */
-    return userModel.findOne({ email }).lean()
+    const user = userModel.findOne({ email }).lean()
+    console.log( 'User en UserManager' + user);
+    return user
+
   }
 
   create(user) {
