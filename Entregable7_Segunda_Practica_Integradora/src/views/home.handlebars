@@ -1,0 +1,31 @@
+<div class="container">
+     <div class="row d-flex justify-content-center align-items-center">
+        <div class=" col d-flex align-items-center">
+            <span>Página {{pageInfo.page}} de {{pageInfo.totalPages}}</span>
+            {{#if pageInfo.hasPrevPage}}
+            <a class="p-2" href={{pageInfo.startLink}}>Primero</a>
+            <a class="p-2" href={{pageInfo.prevLink}}>Anterior</a>
+            {{/if}}
+            {{#if pageInfo.hasNextPage}}
+            <a class="p-2" href={{pageInfo.nextLink}}>Siguiente</a>
+            <a class="p-2" href={{pageInfo.endLink}}>Ultimo</a>
+            {{/if}}
+        </div>
+    </div>
+    <div class="row d-flex justify-content-evenly align-items-center">
+        {{#each products}}
+        <div class="card col-sm-4 col-11 mb-2" style="width: 18rem;">
+            <img src="/uploads/{{thumbnails}}" class="card-img-top img_prod" alt="{{thumbnails}}">
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <div>
+                    <span class="title_field_product">Código:</span><span> {{code}}</span>
+                    <span class="title_field_product">Stock:</span><span> {{stock}}un.</span>
+                    <span class="title_field_product">Precio:</span><span> ${{price}}</span>
+                </div>
+                <p class="card-text">{{description}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
