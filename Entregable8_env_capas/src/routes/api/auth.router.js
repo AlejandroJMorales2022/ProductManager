@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const passport = require('passport');
 const gitHubHandler = require('../../config/passport.github');
+const { gitHubCallBack } = require('../../controllers/auth.controller')
 
 const router = Router()
 
@@ -14,22 +15,7 @@ router.get('/github', passport.authenticate(gitHubHandler, { scope: ['user:email
 // es redirigido a nuestro callback para poder guardar la session
 router.get('/githubcallback',
     passport.authenticate(gitHubHandler, { failureRedirect: '/login' }),
-    async (req, res) => {
-        // se guarda la session del usuario
-        const { email } = req.user;
-
-        req.session.save((err) => {
-            if (!err) {
-                // Almacenar la propiedad role en la sesión
-                req.session.role = (email === 'adminCoder@coder.com') ? 'Administrador' : 'Usuario';
-                return res.redirect('/');
-            }
-            console.log(err)
-            res.redirect('/login');
-        });
-    });
-
-
-
+    gitHubCallBack
+);
 
 module.exports = router;
