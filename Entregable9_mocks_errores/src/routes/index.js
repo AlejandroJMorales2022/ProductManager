@@ -5,7 +5,7 @@ const CartRouter = require('./api/carts.router');
 const ViewRouter = require('./views.router');
 const SessionRouter = require('./api/sessions.router');
 const AuthRouter = require('./api/auth.router');
-const MockingProductsRouter = require('./mocking.products')
+const MockingProductsRouter = require('./mocking.products.router')
 
 
 // /api
