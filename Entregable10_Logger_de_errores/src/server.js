@@ -45,7 +45,7 @@ const initializePassport = require('./config/passport.config');
     //Importo los Tipos de Errores
     const { ErrorType } = require('../src/errors/custom.error')
     //Importo los routers
-    const { api, views, mockingProducts } = require('../src/routes/index');
+    const { api, views, mockingProducts, loggersTest } = require('../src/routes/index');
     let userOnline = [];
     // Middleware de Logger de Errores (Winston)
     const loggerMiddleware = require('../src/middlewares/logger.middleware');
@@ -116,6 +116,7 @@ const initializePassport = require('./config/passport.config');
         app.use('/api', api);
         app.use('/', views);
         app.use('/', mockingProducts);
+        app.use('/', loggersTest);
 
 
 
@@ -180,8 +181,8 @@ const initializePassport = require('./config/passport.config');
 
         })
     } catch (error) {
-        env === 'development' ? devLogger.error(`status: 404 - ${newError.type}`)
-            : prodLogger.error(`status: 500 - ${newError.type} - ${(new Date()).toISOString()}`);
+        env === 'development' ? devLogger.error(`status: 404 - ${error.message}`)
+            : prodLogger.error(`status: 500 - ${error} - ${(new Date()).toISOString()}`);
     }
 })()
 

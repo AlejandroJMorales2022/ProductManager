@@ -5,7 +5,8 @@ const CartRouter = require('./api/carts.router');
 const ViewRouter = require('./views.router');
 const SessionRouter = require('./api/sessions.router');
 const AuthRouter = require('./api/auth.router');
-const MockingProductsRouter = require('./mocking.products.router')
+const MockingProductsRouter = require('./mocking.products.router');
+const LoggersTestRouter = require('./loggerstest.router');
 
 
 // /api
@@ -21,11 +22,13 @@ router.use('/sessions', SessionRouter);
 router.use('/auth', AuthRouter);
 /* //route de MockingPorducts
 router.use('/mockingproducts', MockingProductsRouter); */
+/* router.use('/loggerstest', LoggersTestRouter ); */
 
 
 
 module.exports = {
     api: router,
     views: ViewRouter,
-    mockingProducts : MockingProductsRouter
+    mockingProducts : MockingProductsRouter,
+    loggersTest: LoggersTestRouter
 }

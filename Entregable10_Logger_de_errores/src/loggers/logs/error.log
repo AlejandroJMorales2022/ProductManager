@@ -4,3 +4,8 @@
 [31merror[39m: status: 404 - El Valor o Formato del ObjectId del Documento Product es Inválido, verifique el formato del mismo y que exista dentro de la colección de la base de datos - 2023-10-07T21:43:30.759Z
 {"level":"error","message":"status: 404 - El Valor o Formato del ObjectId del Documento Product es Inválido, verifique el formato del mismo y que exista dentro de la colección de la base de datos - 2023-10-07T21:44:40.175Z"}
 error: status: 404 - El Valor o Formato del ObjectId del Documento Product es Inválido, verifique el formato del mismo y que exista dentro de la colección de la base de datos - 2023-10-07T21:46:08.750Z
+error:  PRODUCTION LOGGER ACTION: ERROR [GET] - /loggerstest/error at 2023-10-12T13:25:20.349Z
+error:  PRODUCTION LOGGER ACTION: ERROR [GET] - /loggerstest/error at 2023-10-12T13:25:53.397Z
+error:  PRODUCTION LOGGER ACTION: ERROR [GET] - /loggerstest/error at 2023-10-12T13:45:03.552Z
+error:  PRODUCTION LOGGER ACTION: ERROR [GET] - /loggerstest/error at 2023-10-12T13:45:19.502Z
+error:  PRODUCTION LOGGER ACTION: ERROR [GET] - /loggerstest/error at 2023-10-12T13:46:14.774Z
