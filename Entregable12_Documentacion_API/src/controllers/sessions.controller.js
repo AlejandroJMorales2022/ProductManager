@@ -66,8 +66,13 @@ const login =  (req, res, next) => {
             }
             // Almacenar la propiedad role en la sesión
             const loggedUser = await userManager.getByEmail(email)
-            req.session.role = (email === 'adminCoder@coder.com') ? 'Administrador' : loggedUser?.role;
+            console.log('USUARIO LOGUEADO ***: ' + loggedUser.role)
+            req.session.role = loggedUser.role/* (email === 'adminCoder@coder.com') ? 'Administrador' : loggedUser?.role; */
             // Redirección después de un inicio de sesión exitoso
+            /* res.send({
+                status: 'success',
+                massage: 'Usuario Logueado con Exito'
+            }) */
             res.redirect('/');
         });
 

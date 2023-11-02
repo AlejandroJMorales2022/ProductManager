@@ -28,8 +28,8 @@ paths:
             schema:
               $ref: '#components/schemas/Product'
       responses:
-        200:
-          description: Success
+        201:
+          description: El Producto ha sido Agregado con Exito
           content:
             application/json:
               schema:
@@ -154,9 +154,6 @@ components:
     Product:
       type: object
       properties:
-        _id:
-          type: ObjectId
-          description: Id del Producto generado por MongoDB
         title:
           type: string
           description: Titulo/Nombre del Producto
@@ -182,7 +179,6 @@ components:
           type: string
           description: Imagenes asociadas al Producto
       example:
-          _id: 64c93e557ba17db5afa18056
           title: Lapiz Color Morado
           description: Lapiz color Verde largo Faber Castell x1
           code: CD6556
@@ -190,5 +186,5 @@ components:
           status: true
           stock: 250
           category: Libreria
-          thumbnails: ["pencil_green.jpg"]
+          thumbnails: []
     
