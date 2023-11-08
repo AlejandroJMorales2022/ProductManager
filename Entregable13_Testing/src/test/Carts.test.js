@@ -2,22 +2,32 @@ const chai = require('chai');
 const supertest = require('supertest')
 
 const expect = chai.expect
-const requestor = supertest('http://localhost:8080');
+/* const requestor = supertest('http://localhost:8080'); */
+const requestor = supertest.agent('http://localhost:8080')
 
-const user = {
+//USUARIO PREMIUM
+/* const user = {
     email: "malejandro2002@yahoo.com.ar",
     password: "1234"
+}; */
+
+//USUARIO USUARIO
+const user = {
+    email: "info@cabanasecosdelvalle.com.ar",
+    password: "123"
 };
+
 const productToAdd = "64c93e557ba17db5afa18056";
 let idCart = '';
 const quantitiToAdd = 30;
 
 describe('CartsTest', () => {
-    it('CreateCart_Success - POST', async () => {
+    it('CreateCart_Success - POST', async function () {
 
+        this.timeout(5000)
         const userSession = await requestor.post('/api/sessions/login').send(user);
 
-        const { statusCode, headers, _body } = await requestor.post('/api/carts/');
+        const { statusCode, _body } = await requestor.post('/api/carts/');
 
         expect(statusCode).to.be.equal(201) //create Ok
         expect(_body._id).to.be.ok

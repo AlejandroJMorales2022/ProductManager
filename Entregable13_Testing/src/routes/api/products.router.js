@@ -34,13 +34,13 @@ router.get('/', controller.getAll);
 router.get('/:pid', controller.getById);
 
 //POST (add product) api/products/  //agrega un producto
-router.post('/', /* isAdminOrUserPremium, */  controller.create);
+router.post('/', isAdminOrUserPremium,  controller.create);
 
 //DELETE api/products/:pid //borra un producto
-router.delete('/:pid', /* isAdminOrUserOwner, */controller.deleteById);
+router.delete('/:pid', isAdminOrUserOwner,controller.deleteById);
 
 //PUT api/products/:pid (modifica un  producto existente)
-router.put('/:pid',  /* isAdminOrUserOwner, */ controller.update);
+router.put('/:pid',  isAdminOrUserOwner, controller.update);
 
 //POST api/products/:pid/upload (Ruta para cargar un archivo de imagen a un producto)
 router.post('/:pid/upload', isAdminOrUserOwner, upload.single('img'), controller.uploadImg);

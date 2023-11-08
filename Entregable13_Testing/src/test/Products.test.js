@@ -2,21 +2,29 @@ const chai = require('chai');
 const supertest = require('supertest')
 
 const expect = chai.expect
-const requestor = supertest('http://localhost:8080');
+/* const requestor = supertest('http://localhost:8080'); */
+const requestor = supertest.agent('http://localhost:8080')
 
+//USUARIO PREMIUM
 const user = {
             email: "malejandro2002@yahoo.com.ar",
             password: "1234"
         };
+//USUARIO USUARIO
+/* const user = {
+    email: "info@cabanasecosdelvalle.com.ar",
+    password: "123"
+};*/
+
 
 describe('ProductTest', () => {
 
     let id_product = '';
     let price=0;
 
-    it('AddProduct_Success - POST', async () => {
+    it('AddProduct_Success - POST', async function() {
 
-        
+        this.timeout(5000)
         const userSession = await requestor.post('/api/sessions/login').send(user);
         
         const product = {
