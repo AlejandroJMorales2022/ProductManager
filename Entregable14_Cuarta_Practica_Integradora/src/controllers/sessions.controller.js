@@ -30,7 +30,7 @@ const signUp = (req, res, next) => {
 
 
 //Login de Usuario
-const login =  (req, res, next) => {
+const login = (req, res, next) => {
 
     passport.authenticate('local-login', (err, user, info) => {
         console.log('PASSPORT.AUTHENTICATED USER: ' + JSON.stringify(user, null, 2))
@@ -70,7 +70,7 @@ const login =  (req, res, next) => {
             req.session.role = loggedUser.role/* (email === 'adminCoder@coder.com') ? 'Administrador' : loggedUser?.role; */
             //Actualiza el flag last_connection del usuario
             const now = Date.now();
-            const updatedUser = await userManager.update(user._id, {...user, last_connection: now });
+            const updatedUser = await userManager.update(user._id, { ...user, last_connection: now });
             // Redirección después de un inicio de sesión exitoso
             /* res.send({
                 status: 'success',
@@ -78,9 +78,25 @@ const login =  (req, res, next) => {
             }) */
             res.redirect('/');
         });
-  
+
     })(req, res, next);
 };
+
+//logout
+const logout = async (req, res) => {
+    const { user } = req
+    //Actualiza el flag last_connection del usuario
+    const now = Date.now();
+    const updatedUser = await userManager.update(user._id, { ...user, last_connection: now });
+    console.log('El Usuario Cerro la Sesión...')
+    /*  console.log(JSON.stringify(user,null,2)) */
+    req.logout(function (err) {
+        if (err) {
+            console.error(err);
+        }
+        res.redirect('/login');
+    });
+}
 
 
 //trae el usuario logueado, si existiera uno
@@ -150,6 +166,7 @@ const restartpass = async (req, res, next) => {
 module.exports = {
     signUp,
     login,
+    logout,
     getCurrentUser,
     restartpass
 }

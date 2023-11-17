@@ -16,6 +16,8 @@ router.post('/signup', controller.signUp);
 //Login de Usuario
 router.post('/login', controller.login);
 
+//LogOut
+router.get('/logout', isAuth, controller.logout); 
 
 //GET Current User - Trae el Usuario Logueado y el carrito populado con los productas cargados
 router.get('/current', isAuth, controller.getCurrentUser );
